@@ -76,3 +76,39 @@ checkWinner(scoreDolphins, scoreKoalas);
 scoreDolphins = calcAverage(85, 54, 41);
 scoreKoalas = calcAverage(23, 34, 27);
 checkWinner(scoreDolphins, scoreKoalas);
+
+// Introduction to Arrays
+const populations = [328, 83, 38, 1441];
+console.log(populations.length === 4);
+const percentages = [
+	percentageOfWorld1(328),
+	percentageOfWorld1(83),
+	percentageOfWorld1(38),
+	percentageOfWorld1(1441),
+];
+console.log(percentages);
+
+// Basic Array Operations (Methods)
+const neighbours = ["Sweden", "Finland", "Russia", "Denmark", "Iceland"];
+neighbours.push("Utopia");
+console.log(neighbours);
+neighbours.pop();
+console.log(neighbours);
+
+if (!neighbours.includes("Germany")) {
+	console.log(`Probably not a central European country :D`);
+}
+
+neighbours[neighbours.indexOf("Sweden")] = "Republic of Sweden";
+console.log(neighbours);
+
+// Coding Challenge #2
+const calcTip = (bill) =>
+	bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+console.log(calcTip(100));
+
+const bills = [125, 555, 44];
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+console.log(bills, tips, totals);
