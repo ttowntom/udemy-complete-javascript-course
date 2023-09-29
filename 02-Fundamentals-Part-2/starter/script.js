@@ -141,7 +141,7 @@ const ages = [
 	calcAge(years[years.length - 1]),
 ];
 console.log(ages);
-*/
+
 
 // Basic Array Operations (Methods)
 // Add elements
@@ -169,4 +169,161 @@ console.log(friends.includes(23)); // returns true if element is in the array
 
 if (friends.includes("Steven")) {
 	console.log("You have a friend called Steven");
+}
+
+
+// Introduction to Objects
+const tom = {
+	firstName: "Tom",
+	lastName: "Reset",
+	age: 2023 - 1988,
+	job: "programmer",
+	friends: ["Michael", "Peter", "Steven"],
+};
+console.log(tom);
+
+// Dot vs. Bracket Notation
+console.log(tom.lastName); // dot notation
+console.log(tom["lastName"]); // bracket notation
+
+const nameKey = "Name";
+console.log(tom["first" + nameKey]); // bracket notation takes expressions
+
+// const interestedIn = prompt(
+// 	"What do you want to know about Tom? Choose between firstName, lastName, age, job and friends"
+// );
+
+// if (tom[interestedIn]) {
+// 	console.log(tom[interestedIn]);
+// } else {
+// 	console.log(
+// 		"Wrong request! Choose between firstName, lastName, age, job and friends"
+// 	);
+// }
+
+// Adding New Properties
+tom.location = "Norway";
+tom["twitter"] = "@ttowntomtoo";
+console.log(tom);
+
+// Challenge
+// "Tom has 3 friends, and his best friend is called Michael"
+console.log(
+	`${tom.firstName} has ${tom.friends.length} friends, and his best friend is called ${tom.friends[0]}`
+);
+
+
+// Object Methods
+const tom = {
+	firstName: "Tom",
+	lastName: "Reset",
+	birthYear: 1988,
+	job: "programmer",
+	friends: ["Michael", "Peter", "Steven"],
+	hasDriversLicense: true,
+
+	// a function within an object is called a method
+	// calcAge: function (birthYear) {
+	// 	return 2023 - birthYear;
+	// },
+
+	// calcAge: function () {
+	// 	return 2023 - this.birthYear;
+	// },
+
+	calcAge: function () {
+		this.age = 2023 - this.birthYear;
+		return this.age;
+	},
+
+	getSummary: function () {
+		return `${this.firstName} is a ${this.calcAge()}-year old ${
+			this.job
+		}, and he has ${this.hasDriversLicense ? "a" : "no"} driver's license`;
+	},
+};
+// console.log(tom.calcAge(1988));
+// console.log(tom["calcAge"](1988));
+console.log(tom.calcAge());
+
+console.log(tom.age);
+console.log(tom.age);
+console.log(tom.age);
+
+// Challenge
+// "Tom is a 35-year old programmer, and he has a driver's license"
+console.log(tom.getSummary());
+
+
+// Iteration: The for Loop
+// for loop keeps running while condition is TRUE
+for (let rep = 1; rep <= 10; rep++) {
+	console.log(`Lifting weights repetition ${rep}`);
+}
+
+// Looping Arrays, Breaking and Continuing
+const tom = [
+	"Tom",
+	"Reset",
+	2023 - 1988,
+	"programmer",
+	["Jerry", "Spike", "Tyke"],
+];
+
+const types = [];
+
+for (let i = 0; i < tom.length; i++) {
+	console.log(tom[i], typeof tom[i]);
+
+	// Fill types array
+	// types[i] = typeof tom[i];
+	types.push(typeof tom[i]);
+}
+console.log(types);
+
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+	ages.push(2023 - years[i]);
+}
+console.log(ages);
+
+// Continue and Break
+console.log("--- ONLY STRINGS ---");
+for (let i = 0; i < tom.length; i++) {
+	if (typeof tom[i] !== "string") continue; // skip the current iteration
+
+	console.log(tom[i], typeof tom[i]);
+}
+
+console.log("--- BREAK WITH NUMBER ---");
+for (let i = 0; i < tom.length; i++) {
+	if (typeof tom[i] === "number") break; // break the loop
+
+	console.log(tom[i], typeof tom[i]);
+}
+*/
+
+// Looping Backwards and Loops in Loops
+const tom = [
+	"Tom",
+	"Reset",
+	2023 - 1988,
+	"programmer",
+	["Jerry", "Spike", "Tyke"],
+];
+
+// Looping Backwards
+for (let i = tom.length - 1; i >= 0; i--) {
+	console.log(i, tom[i]);
+}
+
+// Loops in Loops
+for (let exercise = 1; exercise < 4; exercise++) {
+	console.log(`----- Starting exercise ${exercise}`);
+
+	for (let rep = 1; rep < 6; rep++) {
+		console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`);
+	}
 }

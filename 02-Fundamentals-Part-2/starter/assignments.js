@@ -112,3 +112,93 @@ const bills = [125, 555, 44];
 const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
 const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 console.log(bills, tips, totals);
+
+// Introduction to Objects
+const myCountry = {
+	country: "Norway",
+	capital: "Oslo",
+	language: "Norwegian",
+	population: 5.4,
+	neighbours: ["Sweden", "Finland", "Russia"],
+	describe: function () {
+		console.log(
+			`${this.country} has ${this.population} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`
+		);
+	},
+	checkIsland: function () {
+		this.isIsland = this.neighbours.length === 0 ? true : false;
+	},
+};
+console.log(myCountry.describe());
+
+// Dot vs. Bracket Notation
+console.log(
+	`${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`
+);
+myCountry.population += 2;
+console.log(myCountry.population);
+myCountry["population"] -= 2;
+console.log(myCountry.population);
+
+// Coding Challenge #3
+const mark = {
+	fullName: "Mark Miller",
+	mass: 78,
+	height: 1.69,
+
+	calcBMI: function () {
+		this.bmi = this.mass / (this.height * this.height);
+		return this.bmi;
+	},
+};
+
+const john = {
+	fullName: "John Smith",
+	mass: 92,
+	height: 1.95,
+
+	calcBMI: function () {
+		this.bmi = this.mass / (this.height * this.height);
+		return this.bmi;
+	},
+};
+
+mark.calcBMI();
+john.calcBMI();
+
+if (mark.bmi > john.bmi) {
+	console.log(
+		`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s BMI (${john.bmi})`
+	);
+} else if (john.bmi > mark.bmi) {
+	console.log(
+		`${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s BMI (${mark.bmi})`
+	);
+}
+
+// Iteration: The for Loop
+// for (let voter = 1; voter <= 50; voter++) {
+// 	console.log(`Voter number ${voter} is currently voting`);
+// }
+
+// Looping Arrays, Breaking and Continuing
+const populations2 = [328, 83, 38, 1441];
+const percentages2 = [];
+
+for (let i = 0; i < populations2.length; i++) {
+	percentages2.push(percentageOfWorld1(populations2[i]));
+}
+console.log(percentages2);
+
+// Looping Backwards and Loops in Loops
+const listOfNeighbours = [
+	["Canada", "Mexico"],
+	["Spain"],
+	["Norway", "Sweden", "Russia"],
+];
+
+for (let i = 0; i < listOfNeighbours.length; i++) {
+	for (let y = 0; y < listOfNeighbours[i].length; y++) {
+		console.log(`Neighbour: ${listOfNeighbours[i][y]}`);
+	}
+}
