@@ -202,3 +202,25 @@ for (let i = 0; i < listOfNeighbours.length; i++) {
 		console.log(`Neighbour: ${listOfNeighbours[i][y]}`);
 	}
 }
+
+// The while Loop
+const percentages3 = [];
+let i = 0;
+while (i < populations2.length) {
+	percentages3.push(percentageOfWorld1(populations2[i]));
+	i++;
+}
+console.log(percentages3);
+
+// Coding Challenge #4
+const bills2 = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips2 = [];
+const totals2 = [];
+
+const calcTip2 = (bill) =>
+	bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+for (let i = 0; i < bills2.length; i++) {
+	tips2.push(calcTip2(bills2[i]));
+	totals2.push(bills2[i] + tips2[i]);
+}
