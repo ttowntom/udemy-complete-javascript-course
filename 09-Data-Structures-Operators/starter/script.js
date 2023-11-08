@@ -31,6 +31,11 @@ const restaurant = {
     console.log(`Here is the pasta with ${ing1}, ${ing2} and ${ing3}`);
   },
 
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -164,3 +169,64 @@ const restaurant = {
 // const restaurantCopy = { ...restaurant };
 // restaurantCopy.name = 'Lol lol lol';
 // console.log(restaurant.name, restaurantCopy.name);
+
+// // Rest pattern and parameters
+// // 1) Destructuring
+// SPREAD because RIGHT side of =
+// const arr = [1, 2, ...[3, 4]];
+
+// // REST because LEFT side of =
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+// console.log(a, b, others);
+
+// // REST in objects
+// const { sat, ...weekdays } = restaurant.openingHours;
+// console.log(weekdays);
+
+// // 2) Functions
+// const add = function (...numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++)
+//     sum += numbers[i];
+//   console.log(sum);
+// };
+// add(2, 3);
+// add(5, 3, 7, 2);
+// add(8, 2, 5, 3, 2, 1);
+
+// const x = [23, 5, 7];
+// add(...x); // Spread operator
+
+// restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+// restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+// restaurant.orderPizza('mushrooms');
+
+// Short circuiting (&& and ||)
+// Use ANY data type, return ANY data type, short-circuiting
+console.log('---- OR ----'); // Returns the first truthy value
+console.log(3 || 'Torgeir');
+console.log('' || 'Torgeir');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+// restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+// Nullish: null and undefined (NOT 0 or '')
+console.log('---- AND ----'); // Resturns the first falsy value (or last value if all are truthy)
+console.log(0 && 'Torgeir');
+console.log(7 && 'Torgeir');
+console.log('Hello' && 23 && null && 'Torgeir');
+
+// Practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
