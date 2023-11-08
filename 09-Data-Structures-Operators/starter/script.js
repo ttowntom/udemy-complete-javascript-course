@@ -256,3 +256,16 @@ rest2.owner &&= '<ANONYMOUS>';
 
 console.log(rest1);
 console.log(rest2);
+
+// For-of loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+
+for (const item of menu) console.log(item);
+for (const item of menu.entries()) {
+  console.log(`${item[0] + 1}: ${item[1]}`);
+}
+// With destructuring
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
