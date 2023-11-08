@@ -218,7 +218,11 @@ console.log(guests1);
 const guests2 = restaurant.numGuests || 10;
 console.log(guests2);
 
+// The nullish coalescing operator (??)
 // Nullish: null and undefined (NOT 0 or '')
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+
 console.log('---- AND ----'); // Resturns the first falsy value (or last value if all are truthy)
 console.log(0 && 'Torgeir');
 console.log(7 && 'Torgeir');
@@ -230,3 +234,25 @@ if (restaurant.orderPizza) {
 }
 
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+// OR assignment operator
+// const rest1 = { name: 'Capri', numGuests: 20 };
+const rest1 = { name: 'Capri', numGuests: 0 };
+const rest2 = { name: 'Piazza', owner: 'Torgeir' };
+
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+
+// Nullish assignment operator (null or undefined)
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+// AND assignment operator
+rest1.owner &&= '<ANONYMOUS>';
+rest2.owner &&= '<ANONYMOUS>';
+
+console.log(rest1);
+console.log(rest2);
