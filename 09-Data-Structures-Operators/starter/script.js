@@ -297,7 +297,7 @@ const users = [{ name: 'Torgeir', email: 'hello@ttowntom.com' }];
 console.log(users[0]?.name ?? 'User array empty');
 
 
-*/
+
 
 // Looping over objects
 // Looping over keys (NAMES)
@@ -320,3 +320,5 @@ const entries = Object.entries(hours);
 for (const [key, { open, close }] of entries) {
   console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
+
+*/
