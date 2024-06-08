@@ -61,11 +61,30 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = '';
+
+  movements.forEach(function (movement, index) {
+    const type = movement > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${
+      index + 1
+    } ${type}</div>
+        <div class="movements__value">${movement}€</div>
+      </div>
+    `;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+displayMovements(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -136,7 +155,7 @@ movements.forEach(function (movement, index, array) {
   }
 });
 
-*/
+
 
 // forEach with Maps and Sets
 // Map
@@ -156,3 +175,68 @@ const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
 currenciesUnique.forEach(function (value, _, map) {
   console.log(`${value}: ${value}`);
 });
+
+*/
+
+///////////////////////////////////////
+// Coding Challenge #1
+
+/* 
+Julia and Kate are doing a study on dogs. So each of them asked 5 dog owners about their dog's age, and stored the data into an array (one array for each). For now, they are just interested in knowing whether a dog is an adult or a puppy. A dog is an adult if it is at least 3 years old, and it's a puppy if it's less than 3 years old.
+
+Create a function 'checkDogs', which accepts 2 arrays of dog's ages ('dogsJulia' and 'dogsKate'), and does the following things:
+
+1. Julia found out that the owners of the FIRST and the LAST TWO dogs actually have cats, not dogs! So create a shallow copy of Julia's array, and remove the cat ages from that copied array (because it's a bad practice to mutate function parameters)
+2. Create an array with both Julia's (corrected) and Kate's data
+3. For each remaining dog, log to the console whether it's an adult ("Dog number 1 is an adult, and is 5 years old") or a puppy ("Dog number 2 is still a puppy 🐶")
+4. Run the function for both test datasets
+
+HINT: Use tools from all lectures in this section so far 😉
+
+TEST DATA 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
+TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
+
+GOOD LUCK 😀
+
+
+const test1Julia = [3, 5, 2, 12, 7];
+const test1Kate = [4, 1, 15, 8, 3];
+const test2Julia = [9, 16, 6, 8, 3];
+const test2Kate = [10, 5, 6, 1, 4];
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  const dogsJuliaCopy = dogsJulia.slice(1, -2);
+  const dogs = [...dogsJuliaCopy, ...dogsKate];
+
+  dogs.forEach(function (dog, index) {
+    if (dog >= 3) {
+      console.log(
+        `Dog number ${index + 1} is an adult, and is ${dog} years old`
+      );
+    } else {
+      console.log(`Dog number ${index + 1} is still a puppy 🐶`);
+    }
+  });
+};
+
+checkDogs(test1Julia, test1Kate);
+console.log('---');
+checkDogs(test2Julia, test2Kate);
+
+///////////////////////////////////////
+*/
+
+// MAP METHOD
+const eurToUsd = 1.1;
+
+const movementsUSD = movements.map(movement => movement * eurToUsd);
+
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for (const movement of movements) {
+  movementsUSDfor.push(movement * eurToUsd);
+}
+
+console.log(movementsUSDfor);
