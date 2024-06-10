@@ -80,6 +80,29 @@ const displayMovements = function (movements) {
   });
 };
 displayMovements(account1.movements);
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce(function (acc, movement) {
+    return acc + movement;
+  }, 0);
+
+  labelBalance.textContent = `${balance}€`;
+};
+
+calcDisplayBalance(account1.movements);
+
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+createUsernames(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -224,7 +247,7 @@ console.log('---');
 checkDogs(test2Julia, test2Kate);
 
 ///////////////////////////////////////
-*/
+
 
 // MAP METHOD
 const eurToUsd = 1.1;
@@ -240,3 +263,42 @@ for (const movement of movements) {
 }
 
 console.log(movementsUSDfor);
+
+const movementsDescriptions = movements.map(
+  (movement, index) =>
+    `Movement ${index + 1}: You ${
+      movement > 0 ? 'deposited' : 'withdrew'
+    } ${Math.abs(movement)}`
+);
+
+console.log(movementsDescriptions);
+
+
+// FILTER METHOD
+
+const deposits = movements.filter(function (movement) {
+  return movement > 0;
+});
+
+console.log(deposits);
+
+const withdrawals = movements.filter(movement => movement < 0);
+console.log(withdrawals);
+
+
+// REDUCE METHOD
+
+const balance = movements.reduce(function (acc, movement) {
+  return acc + movement;
+}, 0);
+
+console.log(balance);
+*/
+
+// Maximum value
+const max = movements.reduce(
+  (acc, movement) => (acc > movement ? acc : movement),
+  movements[0]
+);
+
+console.log(max);
