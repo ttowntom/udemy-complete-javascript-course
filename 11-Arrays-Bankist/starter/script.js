@@ -616,3 +616,55 @@ labelBalance.addEventListener('click', function () {
 */
 
 ///////////////////////////////////////
+
+// Array Methods Practice
+
+// 1. Calculate the total deposits in the bank
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((sum, mov) => sum + mov, 0);
+
+console.log(bankDepositSum);
+
+// 2. Count how many deposits there are in the bank with at least 1000
+const numDeposits1000 = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov >= 1000).length;
+
+console.log(numDeposits1000);
+
+// 3. Create an object which contains the sum of deposits and withdrawals
+
+const { deposits, withdrawals } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sums, mov) => {
+      sums[mov > 0 ? 'deposits' : 'withdrawals'] += mov;
+      return sums;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
+
+console.log(deposits, withdrawals);
+
+// 4. Convert any string to a title case
+const convertTitleCase = function (title) {
+  const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with'];
+
+  const capitalize = str => str[0].toUpperCase() + str.slice(1);
+
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(word => (exceptions.includes(word) ? word : capitalize(word)))
+    .join(' ');
+
+  return capitalize(titleCase);
+};
+
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG title but not too long'));
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));
+
+///////////////////////////////////////
