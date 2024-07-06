@@ -2,9 +2,10 @@
   "name": "forkify",
   "version": "0.0.1",
   "description": "Recipies web app",
+  "default": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "author": "Torgeir Helgesen Riseth (Jonas Schmedman)",
   "license": "ISC",
